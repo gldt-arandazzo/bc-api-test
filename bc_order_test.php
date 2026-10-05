@@ -105,7 +105,7 @@ function httpRequest(string $method, string $url, array $headers = [], ?string $
     $errno  = curl_errno($ch);
     $error  = curl_error($ch);
     $status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+    unset($ch);
 
     if ($errno !== 0) {
         fail("cURL error ($errno): $error");
